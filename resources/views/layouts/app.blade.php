@@ -1,8 +1,5 @@
 @extends('layouts.base')
 
-
-@stack('stylesheet')
-
 @section('app')
 
 <!-- Page Wrapper -->
@@ -41,6 +38,6 @@
 
 </div>
 <!-- End of Page Wrapper -->
-@endsection
 
 @stack('scripts')
+@endsection

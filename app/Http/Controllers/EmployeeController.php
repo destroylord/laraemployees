@@ -16,8 +16,11 @@ class EmployeeController extends Controller
     {
         $title = 'Data Karyawan';
 
+        $data = Employee::all();
+
         return view ('admin.employees.index', [
-            'title' => $title
+            'title' => $title,
+            'employees' => $data
         ]);
     }
 
@@ -69,9 +72,7 @@ class EmployeeController extends Controller
     public function edit(Employee $employee)
     {
         $title = "Edit Data Karyawan";
-        return view('admin.employees.edit', [
-            'title' => $title
-        ]);
+        return view('admin.employees.edit', compact('title','employee'));
     }
 
     /**
@@ -83,7 +84,7 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        //
+        
     }
 
     /**
@@ -94,6 +95,7 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+        return back();
     }
 }

@@ -8,30 +8,30 @@
                   <h6 class="m-0 font-weight-bold text-primary"></h6>
                 </div>
                 <div class="card-body">
-                    <form action="" method="post">
+                    <form action="{{ route('employee.edit') }}" method="post">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="formGroupExampleInput">Nama karyawan</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="nama karyawan...">
+                                <input type="text" class="form-control" name="name" value="{{ old('name', $employee->employee_name) }}" id="formGroupExampleInput" placeholder="nama karyawan...">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="formGroupExampleInput">Jabatan</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="jabatan">
+                                <input type="text" class="form-control" name="position" value="{{ old('position', $employee->position) }}" id="formGroupExampleInput" placeholder="jabatan">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="formGroupExampleInput">Jenis Kelamin</label>
-                                <select id="inputState" class="form-control">
+                                <select id="inputState" class="form-control" name="gender">
                                     <option selected>Pilih</option>
-                                    <option> Laki-laki </option>
-                                    <option> Perempuan </option>
+                                    <option value="male" {{ $employee->gender == "male" ? 'selected' : '' }}> Laki-laki </option>
+                                    <option value="female" {{ $employee->gender == "female" ? 'selected' : '' }}> Perempuan </option>
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="formGroupExampleInput">Status</label>
-                                <select id="inputState" class="form-control">
+                                <select id="inputState" class="form-control" name="active">
                                     <option selected>Pilih</option>
-                                    <option> Aktif </option>
-                                    <option> Tidak aktif </option>
+                                    <option value="1" {{ $employee->active == '1' ? 'selected' : ''}}> Aktif </option>
+                                    <option value="0" {{ $employee->active == '0' ? 'selected' : ''}}> Tidak aktif </option>
                                 </select>
                             </div>
                         </div>
