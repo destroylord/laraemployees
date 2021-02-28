@@ -17,7 +17,7 @@ class CreateEmployeesTable extends Migration
             $table->increments('id');
             $table->string('employee_name', 100);
             $table->enum('gender', ['male', 'female']);
-            $table->string('postion');
+            $table->string('position');
             $table->enum('active', [0,1]);
             $table->timestamps();
         });

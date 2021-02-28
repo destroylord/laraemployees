@@ -14,7 +14,11 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $title = 'Data Karyawan';
+
+        return view ('admin.employees.index', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -24,7 +28,10 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        $title = "Tambah Data Karyawan";
+        return view('admin.employees.create', [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -35,7 +42,11 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attr = $request->all();
+
+        Employee::create($attr);
+
+        return back();
     }
 
     /**
@@ -57,7 +68,10 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        //
+        $title = "Edit Data Karyawan";
+        return view('admin.employees.edit', [
+            'title' => $title
+        ]);
     }
 
     /**
