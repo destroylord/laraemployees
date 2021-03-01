@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @push('stylesheet')
-    <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css">
+    {{-- <link rel="stylesheet" href="css/dataTables.bootstrap4.min.css"> --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
 @endpush
 
 @section('body')
@@ -19,7 +21,7 @@
 
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table table-bordered" id="dataTable">
+          <table class="table table-bordered" width="100%" id="dataTable">
               <thead>
                   <tr>
                     <th>No.</th>
@@ -27,7 +29,7 @@
                     <th>Jabatan</th>
                     <th>Jenis Kelamin</th>
                     <th>Status</th>
-                    <th colspan="2">Option</th>
+                    <th>Option</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -58,6 +60,10 @@
 @endsection
 
 @push('scripts')
+
+
+ 
     <script src="js/jquery.dataTables.min.js"></script>
     <script src="js/dataTables.bootstrap4.min.js"></script>
+    <script src="js/datatables-demo.js"></script>
 @endpush

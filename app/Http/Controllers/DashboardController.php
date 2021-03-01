@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -15,8 +16,13 @@ class DashboardController extends Controller
     public function __invoke(Request $request)
     {
         $title = 'Dashboard';
-        return view('admin.dashboard', [
-            'title' => $title
-        ]);
+
+        $listMale = Employee::where('gender','male')->get();
+        $countPria = $listMale->count();
+
+        $listFemale = Employee::where('gender','female')->get();
+        $countWanita = $listFemale->count();
+
+        return view('admin.dashboard', compact('title', 'countPria', 'countWanita'));
     }
 }

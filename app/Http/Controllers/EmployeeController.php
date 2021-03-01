@@ -89,7 +89,8 @@ class EmployeeController extends Controller
 
         $employee->update($attr);
 
-        return back();
+        return redirect()
+                ->route('employee.index');
     }
 
     /**

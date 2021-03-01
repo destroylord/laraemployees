@@ -39,5 +39,5 @@
 </div>
 <!-- End of Page Wrapper -->
 
-@stack('scripts')
+
 @endsection
