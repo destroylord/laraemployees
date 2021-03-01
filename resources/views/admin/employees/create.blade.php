@@ -13,27 +13,43 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="formGroupExampleInput">Nama karyawan</label>
-                                <input type="text" class="form-control" name="employee_name" id="formGroupExampleInput" placeholder="nama karyawan...">
+                                <input type="text" class="form-control @error('employee_name') is-invalid @enderror" name="employee_name" id="formGroupExampleInput" placeholder="nama karyawan...">
+
+                                @error('employee_name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="formGroupExampleInput">Jabatan</label>
-                                <input type="text" class="form-control" name="position" id="formGroupExampleInput" placeholder="jabatan">
+                                <input type="text" class="form-control @error('position') is-invalid @enderror" name="position" id="formGroupExampleInput" placeholder="jabatan" >
+
+                                @error('position')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="formGroupExampleInput">Jenis Kelamin</label>
-                                <select id="inputState" class="form-control" name="gender">
+                                <select id="inputState" class="custom-select @error('gender') is-invalid @enderror" name="gender">
                                     <option selected disabled>Pilih</option>
                                     <option value="male"> Laki-laki </option>
                                     <option value="female"> Perempuan </option>
                                 </select>
+
+                                @error('gender')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="formGroupExampleInput">Status</label>
-                                <select id="inputState" class="form-control" name="active">
+                                <select id="inputState" class="custom-select @error('active') is-invalid @enderror" name="active">
                                     <option selected disabled>Pilih</option>
                                     <option value="1"> Aktif </option>
                                     <option value="0"> Tidak aktif </option>
                                 </select>
+
+                                @error('active')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                     

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EmployeeRequest;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 
@@ -43,7 +44,7 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmployeeRequest $request)
     {
         $attr = $request->all();
 
@@ -84,7 +85,11 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        
+        $attr = $request->all();
+
+        $employee->update($attr);
+
+        return back();
     }
 
     /**

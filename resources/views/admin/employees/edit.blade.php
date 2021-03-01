@@ -8,38 +8,57 @@
                   <h6 class="m-0 font-weight-bold text-primary"></h6>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('employee.edit') }}" method="post">
+                    <form action="{{ route('employee.update', $employee) }}" method="post">
+                        @method('PUT')
+                        @csrf
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="formGroupExampleInput">Nama karyawan</label>
-                                <input type="text" class="form-control" name="name" value="{{ old('name', $employee->employee_name) }}" id="formGroupExampleInput" placeholder="nama karyawan...">
+                                <input type="text" class="form-control @error('employee_name') is-invalid @enderror" name="employee_name" value="{{ old('employee_name', $employee->employee_name) }}" id="formGroupExampleInput" placeholder="nama karyawan...">
+
+                                @error('employee_name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="formGroupExampleInput">Jabatan</label>
-                                <input type="text" class="form-control" name="position" value="{{ old('position', $employee->position) }}" id="formGroupExampleInput" placeholder="jabatan">
+                                <input type="text" class="form-control @error('employee_name') is-invalid @enderror" name="position" value="{{ old('position', $employee->position) }}" id="formGroupExampleInput" placeholder="jabatan">
+
+                                @error('position')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="formGroupExampleInput">Jenis Kelamin</label>
-                                <select id="inputState" class="form-control" name="gender">
+                                <select id="inputState" class="custom-select @error('gender') is-invalid @enderror" name="gender">
                                     <option selected>Pilih</option>
                                     <option value="male" {{ $employee->gender == "male" ? 'selected' : '' }}> Laki-laki </option>
                                     <option value="female" {{ $employee->gender == "female" ? 'selected' : '' }}> Perempuan </option>
                                 </select>
+
+                                @error('gender')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="formGroupExampleInput">Status</label>
-                                <select id="inputState" class="form-control" name="active">
+                                <select id="inputState" class="custom-select @error('active') is-invalid @enderror" name="active">
                                     <option selected>Pilih</option>
                                     <option value="1" {{ $employee->active == '1' ? 'selected' : ''}}> Aktif </option>
                                     <option value="0" {{ $employee->active == '0' ? 'selected' : ''}}> Tidak aktif </option>
                                 </select>
+
+                                @error('active')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
-                    </form>
+                   
                 </div>
                 <div class="card-footer">
                     <button class="btn btn-primary btn-sm">Submit</button>
                 </div>
+                </form>
             </div>
         </div>
     </div>
